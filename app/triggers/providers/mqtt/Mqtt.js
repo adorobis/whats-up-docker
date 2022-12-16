@@ -16,7 +16,7 @@ const hassDeviceId = 'wud';
 const hassDeviceName = 'What\'s up Docker?';
 const hassManufacturer = 'fmartinou';
 const hassEntityValueTemplate = '{{ value_json.image_tag_value }}';
-const hassLatestVersionTemplate = '{{ value_json.result_tag or value_json.result_digest }}';
+const hassLatestVersionTemplate = '{% if value_json.result_tag == "digest" %}{{ value_json.result_digest[:15] }}{% else %}{{ value_json.result_tag }}{% endif %}';
 
 /**
  * get mqtt base topic.
